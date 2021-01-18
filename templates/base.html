@@ -1,12 +1,31 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
         <title>Poll Space</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static '/stylesheet/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static '/stylesheet/styles.css' %}">
     </head>
     <body>
-        <h1>hiiiiii</h1>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container-fluid">
+					<div class="navbar-brand">
+						<a href=""><img id="logo" src="{% static 'images/logo.png'%}"></a>
+						<a href=""><h1 id="brandname">Poll Space</h1></a>
+					</div>
+				</div>
+                <button class="navbar-toggler d-sm-none" type="button" data-toggle="collapse" data-target="#collapsable-nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+	    </header>
         {% block content %}
             replace me 
-        {% endblock %}   
+        {% endblock %} 
+        <script src="jquery-3.5.1.min.js"></script>
+	    <script src="bootstrap.min.js"></script>  
     </body>
 </html>
