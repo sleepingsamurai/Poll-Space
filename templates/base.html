@@ -5,6 +5,8 @@
         <title>Poll Space</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="{% static '/js/jquery-3.5.1.min.js' %}"></script>
+	      <script src="{% static '/js/bootstrap.min.js' %}"></script>  
         <link rel="stylesheet" href="{% static '/stylesheet/bootstrap.min.css' %}">
         <link rel="stylesheet" href="{% static '/stylesheet/styles.css' %}">
     </head>
@@ -12,20 +14,46 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid">
-					<div class="navbar-brand">
-						<a href=""><img id="logo" src="{% static 'images/logo.png'%}"></a>
-						<a href=""><h1 id="brandname">Poll Space</h1></a>
-					</div>
-				</div>
-                <button class="navbar-toggler d-sm-none" type="button" data-toggle="collapse" data-target="#collapsable-nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <div class="navbar-brand">
+                    <a href=""><img id="logo" src="{% static 'images/logo.png'%}"></a>
+                    <a href=""><h1 id="brandname">Poll Space</h1></a>
+                  </div>
+                  <button class="navbar-toggler d-sm-none" type="button" data-toggle="collapse" data-target="#collapsable-nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item">
+                        <a id="menu" class="nav-link" href="">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a id="menu" class="nav-link" href="">Create</a>
+                      </li>
+                      <li class="nav-item">
+                        <a id="menu" class="nav-link" href="">Login</a>
+                      </li>
+                      <li class="nav-item">
+                        <a id="menu" class="nav-link" href="">Register</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <h3 id="greeting">HELLO USER!!</h3>
+                </div>
             </nav>
 	    </header>
         {% block content %}
             replace me 
         {% endblock %} 
-        <script src="jquery-3.5.1.min.js"></script>
-	    <script src="bootstrap.min.js"></script>  
+      <footer>
+        <div id="info" class="container-fluid">
+          <h1 style="margin-top: 10px;">Poll Space</h1>
+          <ul id="footlist">
+            <li><a href="">home</a></li>
+            <li><a href="">about</a></li>
+            <li><a href="">credits</a></li>
+          </ul>
+        </div>
+        <h3 style="text-align: center;">Maintained By: Team Poll Space</h3>
+      </footer>  
     </body>
 </html>

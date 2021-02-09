@@ -3,7 +3,6 @@
 }
 body{
 	background-color: #5CDB95;
-	font-size: 16px;
 }
 .navbar{
 	background-color: #053865;
@@ -18,3 +17,27 @@ body{
     height: 70px;
     width: 70px;
 }
+#menu{
+    color: #EDF5E1;
+    font-size: 20px;
+}
+#greeting{
+    color: #EDF5E1;
+}
+footer{
+    background-color: #222;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+}
+#info{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+
+
+
