@@ -37,7 +37,21 @@ footer{
     justify-content: center;
     padding: 10px;
 }
-
-
-
-
+#random, #registerForm{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    text-align: center;
+}
+#gyaan{
+    font-size: 25px;
+    color: #053865;
+}
+#registerForm{
+    background-color: #053865;
+    color: #EDF5E1;
+    width: 400px;
+    margin-top: -15px;
+}
