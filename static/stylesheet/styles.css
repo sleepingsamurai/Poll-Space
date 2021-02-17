@@ -61,8 +61,37 @@ footer{
 .pollitem{
     background-color: #053865;
     width: 100%;
-    padding: 5px;
+    padding: 10px;
+    position: relative;
+    height: 60px;
 }
 .pollname{
-    display: inline;    
+    display: inline;
+    position: absolute;
+    left: 15px; 
+    color: #EDF5E1;
+    font-size: 25px;   
+}
+.function{
+    font-size: 25px;
+    background-color: #EDF5E1;
+    color: #053865;
+    padding: 5px;
+    border-radius: 25px;
+    position: absolute;
+    right: 20px;
+}
+#voteform{
+    background-color: #053865;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    text-align: left;
+    color: #EDF5E1;
+    width: 80%;
+}
+#voting, #question, label{
+    margin-left: 10px;
 }
