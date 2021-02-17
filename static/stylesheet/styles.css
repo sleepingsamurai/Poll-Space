@@ -37,7 +37,7 @@ footer{
     justify-content: center;
     padding: 10px;
 }
-#random, #registerForm{
+#random, #registerForm, #poll_list{
     position: fixed;
     top: 50%;
     left: 50%;
@@ -54,4 +54,15 @@ footer{
     color: #EDF5E1;
     width: 400px;
     margin-top: -15px;
+}
+.polldata{
+    list-style-type: none;
+}
+.pollitem{
+    background-color: #053865;
+    width: 100%;
+    padding: 5px;
+}
+.pollname{
+    display: inline;    
 }
