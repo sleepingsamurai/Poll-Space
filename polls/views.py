@@ -9,3 +9,6 @@ def vote_view(request, *args, **kwargs):
 
 def create_view(request, *args, **kwargs):
     return render(request, 'polls/create.html', {})
+
+def result_view(request, *args, **kwargs):
+    return render(request, 'polls/result.html', {})

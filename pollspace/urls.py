@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from pages.views import home_view, register_view, login_view
-from polls.views import dashboard_view, vote_view, create_view
+from polls.views import dashboard_view, vote_view, create_view, result_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +27,5 @@ urlpatterns = [
     path('polls/dashboard', dashboard_view, name='dashboard'),
     path('polls/1/vote', vote_view, name='vote'),
     path('polls/create', create_view, name='create'),
+    path('polls/1/result', result_view, name='result'),
 ]
