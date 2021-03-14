@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="registerForm">
+    <h3>Register</h3>
+    <form method='POST' action=""> 
+        {% csrf_token %}
+        <label for="uname">Username</label><br>{{form.username}}<br>
+        <label for="email">Email</label><br>{{form.email}}<br>
+        <label for="password1">Password</label><br>{{form.password1}}<br>
+        <label for="password2">Password Confirmation</label><br>{{form.password2}}<br><br>
+        <input id="submitButton" type="submit" value="Submit"><br>
+    </form>
+    {{form.errors}}
+    <p>Already registered user? <a href="./login">login</a></p>
+</div>
+{% endblock %}
