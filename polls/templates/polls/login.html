@@ -3,11 +3,15 @@
 {% block content %}
 <div id="registerForm">
     <h3>Login</h3>
-    <form>
-        <label for="email">Email</label><br><input type="text" id="email" name="email"><br>
-        <label for="password">Password</label><br><input type="password" id="pwd" name="pwd"><br><br>
+    <form method='POST' action="">
+        {% csrf_token %}
+        <label for="username">Email</label><br><input type="text" id="username" name="username"><br>
+        <label for="password">Password</label><br><input type="password" id="password" name="password"><br><br>
         <input id="submitButton" type="submit" value="Submit"><br>
     </form>
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
     <p>New user? <a href="./register">Register</a></p>
 </div>
 {% endblock %}
