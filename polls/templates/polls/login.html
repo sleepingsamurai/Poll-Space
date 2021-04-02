@@ -12,6 +12,6 @@
     {% for message in messages %}
         {{message}}
     {% endfor %}
-    <p>New user? <a href="./register">Register</a></p>
+    <p>New user? <a href="{% url 'register' %}">Register</a></p>
 </div>
 {% endblock %}

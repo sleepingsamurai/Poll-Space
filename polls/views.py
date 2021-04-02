@@ -3,13 +3,22 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from .models import Polls, Voted
 
 # Create your views here.
 def dashboard_view(request, *args, **kwargs) :
-    return render(request, 'polls/dashboard.html', {})
+    polls = Polls.objects.all()
+    context = {
+        'polls' : polls
+    }
+    return render(request, 'polls/dashboard.html', context)
 
-def vote_view(request, *args, **kwargs) :
-    return render(request, 'polls/vote.html', {})
+def vote_view(request, poll_id, *args, **kwargs) :
+    poll = Polls.objects.get(pk = poll_id)
+    context = {
+        'poll' : poll
+    }
+    return render(request, 'polls/vote.html', context)
 
 def create_view(request, *args, **kwargs) :
     return render(request, 'polls/create.html', {})

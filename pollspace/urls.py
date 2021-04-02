@@ -25,7 +25,7 @@ urlpatterns = [
     path('polls/register', register_view, name='register'),
     path('polls/login', login_view, name='login'),
     path('polls/dashboard', dashboard_view, name='dashboard'),
-    path('polls/1/vote', vote_view, name='vote'),
+    path('polls/<poll_id>/vote', vote_view, name='vote'),
     path('polls/create', create_view, name='create'),
     path('polls/1/result', result_view, name='result'),
 ]

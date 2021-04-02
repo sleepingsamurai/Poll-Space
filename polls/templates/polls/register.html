@@ -12,6 +12,6 @@
         <input id="submitButton" type="submit" value="Submit"><br>
     </form>
     {{form.errors}}
-    <p>Already registered user? <a href="./login">login</a></p>
+    <p>Already registered user? <a href="{% url 'login' %}">login</a></p>
 </div>
 {% endblock %}
