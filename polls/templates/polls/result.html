@@ -2,22 +2,23 @@
 
 {% block content %}
 <div id="result" class="container-fluid">
+    <h1>{{ poll.poll_question }}</h1>
     <ul class="polldata">
         <li class="pollitem">
-            <p class="pollname">option 1</p>
-            <p class="function">20</p>
+            <p class="pollname">{{poll.poll_option1}}</p>
+            <p class="function">{{poll.poll_option1_count}}</p>
         </li>
         <li class="pollitem">
-            <p class="pollname">option 2</p>
-            <p  class="function">40</p>
+            <p class="pollname">{{poll.poll_option2}}</p>
+            <p  class="function">{{poll.poll_option2_count}}</p>
         </li>
         <li class="pollitem">
-            <p class="pollname">option 3</p>
-            <p class="function">10</p>
+            <p class="pollname">{{poll.poll_option3}}</p>
+            <p class="function">{{poll.poll_option3_count}}</p>
         </li>
         <li class="pollitem">
-            <p class="pollname">option 4</p>
-            <p  class="function">100</p>
+            <p class="pollname">{{poll.poll_option4}}</p>
+            <p  class="function">{{poll.poll_option4_count}}</p>
         </li>
     </ul>
 

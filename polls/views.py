@@ -8,8 +8,17 @@ from .models import Polls, Voted
 # Create your views here.
 def dashboard_view(request, *args, **kwargs) :
     polls = Polls.objects.all()
+    votedpolls = request.user.voted_set.all()
+    active = []
+    for poll in polls :
+        if Voted.objects.filter(user=request.user,poll=poll) :
+           continue
+        else :
+           active.append(poll)
     context = {
-        'polls' : polls
+        'polls' : polls,
+        'votedpolls' : votedpolls,
+        'active' : active
     }
     return render(request, 'polls/dashboard.html', context)
 
@@ -22,9 +31,13 @@ def vote_view(request, poll_id, *args, **kwargs) :
 
 def create_view(request, *args, **kwargs) :
     return render(request, 'polls/create.html', {})
-
-def result_view(request, *args, **kwargs) :
-    return render(request, 'polls/result.html', {})
+ 
+def result_view(request, poll_id, *args, **kwargs) :
+    poll = Polls.objects.get(pk = poll_id)
+    context = {
+        'poll' : poll
+    }
+    return render(request, 'polls/result.html', context)
 
 def register_view(request) :
     form = CreateUserForm()

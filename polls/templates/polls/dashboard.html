@@ -4,7 +4,7 @@
 <div id="poll_list" class="container-fluid">
     <h3>Active Polls</h3>
     <ul class="polldata">
-        {% for poll in polls %}
+        {% for poll in active %}
         <li class="pollitem">
             <p class="pollname">{{ poll.poll_question }}</p>
             <a class="function" href="{% url 'vote' poll.id %}">Vote</a>
@@ -14,14 +14,12 @@
     <br>
     <h3>Voted</h3>
     <ul class="polldata">
+        {% for vote in votedpolls %}
         <li class="pollitem">
-            <p class="pollname">which character is most evil?</p>
-            <a class="function" href="">Result</a>
+            <p class="pollname">{{ vote.poll.poll_question }}</p>
+            <a class="function" href="{% url 'result' vote.poll.id %}">Result</a>
         </li>
-        <li class="pollitem">
-            <p class="pollname">kya mein chutiya hoon</p>
-            <a class="function" href="">Result</a>
-        </li>
+        {% endfor %}
     </ul>
 </div>
 {% endblock %}
