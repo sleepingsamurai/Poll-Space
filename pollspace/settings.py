@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #own apps
     'polls',
     'pages',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

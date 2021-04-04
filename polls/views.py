@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateUserForm
+from .forms import CreateUserForm,CreatePollForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from .models import Polls, Voted
@@ -24,13 +24,37 @@ def dashboard_view(request, *args, **kwargs) :
 
 def vote_view(request, poll_id, *args, **kwargs) :
     poll = Polls.objects.get(pk = poll_id)
+
+    if request.method == 'POST' :
+        selected = request.POST['one']
+        if selected == 'poll_option1' :
+            poll.poll_option1_count += 1
+        elif selected == 'poll_option2' :
+            poll.poll_option2_count += 1
+        elif selected == 'poll_option3' :
+            poll.poll_option3_count += 1
+        elif selected == 'poll_option4' :
+            poll.poll_option4_count += 1
+        poll.save()
+        Voted.objects.create(user = request.user, poll = poll)
+        return redirect('result',poll_id)
     context = {
         'poll' : poll
     }
     return render(request, 'polls/vote.html', context)
 
 def create_view(request, *args, **kwargs) :
-    return render(request, 'polls/create.html', {})
+    if request.method == 'POST' :
+        form = CreatePollForm(request.POST)
+        if form.is_valid() :
+            form.save()
+            return redirect('dashboard')
+    else :    
+        form = CreatePollForm()
+    context = {
+        'form' : form
+    }
+    return render(request, 'polls/create.html', context)
  
 def result_view(request, poll_id, *args, **kwargs) :
     poll = Polls.objects.get(pk = poll_id)
