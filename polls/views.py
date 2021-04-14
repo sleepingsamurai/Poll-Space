@@ -4,6 +4,7 @@ from .forms import CreateUserForm,CreatePollForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from .models import Polls, Voted
+from django.http import JsonResponse
 
 # Create your views here.
 def dashboard_view(request, *args, **kwargs) :
@@ -86,3 +87,16 @@ def login_view(request) :
             messages.success(request, 'heyyy')
             return redirect('dashboard')
     return render(request, 'polls/login.html', {})
+
+def resultsData(request, poll_id) :
+    votedata = []
+
+    poll = Polls.objects.get(pk = poll_id)
+
+    votedata.append({poll.poll_option1 : poll.poll_option1_count})
+    votedata.append({poll.poll_option2 : poll.poll_option2_count})
+    votedata.append({poll.poll_option3 : poll.poll_option3_count})
+    votedata.append({poll.poll_option4 : poll.poll_option4_count})
+
+    return JsonResponse(votedata, safe=False)
+

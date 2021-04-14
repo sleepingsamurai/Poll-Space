@@ -26,10 +26,6 @@ body{
 }
 footer{
     background-color: #222;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
     color: white;
 }
 #info{
@@ -38,10 +34,8 @@ footer{
     padding: 10px;
 }
 #random, #registerForm, #poll_list, #result{
-    position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
     font-size: 20px;
     text-align: center;
 }
@@ -53,7 +47,6 @@ footer{
     background-color: #053865;
     color: #EDF5E1;
     width: 400px;
-    margin-top: -15px;
 }
 .polldata{
     list-style-type: none;
@@ -83,10 +76,8 @@ footer{
 }
 #voteform, #createform{
     background-color: #053865;
-    position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
     font-size: 20px;
     text-align: left;
     color: #EDF5E1;
