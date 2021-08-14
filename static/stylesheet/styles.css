@@ -24,15 +24,12 @@ body{
 #greeting{
     color: #EDF5E1;
 }
-footer{
-    background-color: #222;
-    color: white;
-}
 #info{
     display: flex;
     justify-content: center;
     padding: 10px;
 }
+
 #random, #registerForm, #poll_list, #result{
     top: 50%;
     left: 50%;
@@ -47,6 +44,8 @@ footer{
     background-color: #053865;
     color: #EDF5E1;
     width: 400px;
+    margin-left: 350px;
+    margin-top: 100px;
 }
 .polldata{
     list-style-type: none;
@@ -76,8 +75,8 @@ footer{
 }
 #voteform, #createform{
     background-color: #053865;
-    top: 50%;
-    left: 50%;
+    margin-left: 100px;
+    margin-top: 100px;
     font-size: 20px;
     text-align: left;
     color: #EDF5E1;
@@ -93,6 +92,8 @@ footer{
 #createform{
     margin-bottom: 25px;
     text-align: center;
+    margin-top: 50px;
+    margin-left: 300px;
 }
 #pollques, .options{
     width: 100%;
@@ -103,4 +104,10 @@ footer{
 #submitButtoncreate{
     margin-top: 5px;
 }
+
+#randomtext{
+    margin-top: 100px;
+}
+
+
 

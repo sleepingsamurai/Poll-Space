@@ -15,8 +15,8 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid">
                   <div class="navbar-brand">
-                    <a href="{% url 'home' %}"><img id="logo" src="{% static 'images/logo.png'%}"></a>
-                    <a href="{% url 'home' %}"><h1 id="brandname">Poll Space</h1></a>
+                    <a href="{% url 'login' %}"><img id="logo" src="{% static 'images/logo.png'%}"></a>
+                    <a href="{% url 'login' %}"><h1 id="brandname">Poll Space</h1></a>
                   </div>
                   <button class="navbar-toggler d-sm-none" type="button" data-toggle="collapse" data-target="#collapsable-nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -35,29 +35,25 @@
                       <li class="nav-item">
                         <a id="menu" class="nav-link" href="{% url 'register' %}">Register</a>
                       </li>
+                      {% if request.user.is_authenticated %}
+                        <li class="nav-item">
+                          <a id="menu" class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                      {% endif %}
                     </ul>
                   </div>
-                  <h3 id="greeting">HELLO, {{ request.user }}!!</h3>
+                  {% if request.user.is_authenticated %}
+                    <h3 id="greeting">HELLO, {{ request.user }}!!</h3>
+                  {% endif %}
                 </div>
             </nav>
 	    </header>
       <br>
-      <section class="container-fluid">
+      <section class="container">
         {% block content %}
         replace me 
         {% endblock %} 
       </section>
       <br>
-    <footer>
-        <div id="info" class="container-fluid">
-          <h1 style="margin-top: 10px;">Poll Space</h1>
-          <ul id="footlist">
-            <li><a href="{% url 'home' %}">home</a></li>
-            <li><a href="{% url 'home' %}">about</a></li>
-            <li><a href="{% url 'home' %}">credits</a></li>
-          </ul>
-        </div>
-        <h3 style="text-align: center;">Maintained By: Team Poll Space</h3>
-      </footer> 
     </body>
 </html>

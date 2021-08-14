@@ -5,8 +5,10 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from .models import Polls, Voted
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required(login_url='login')
 def dashboard_view(request, *args, **kwargs) :
     polls = Polls.objects.all()
     votedpolls = request.user.voted_set.all()
@@ -23,6 +25,7 @@ def dashboard_view(request, *args, **kwargs) :
     }
     return render(request, 'polls/dashboard.html', context)
 
+@login_required(login_url='login')
 def vote_view(request, poll_id, *args, **kwargs) :
     poll = Polls.objects.get(pk = poll_id)
 
@@ -44,6 +47,7 @@ def vote_view(request, poll_id, *args, **kwargs) :
     }
     return render(request, 'polls/vote.html', context)
 
+@login_required(login_url='login')
 def create_view(request, *args, **kwargs) :
     if request.method == 'POST' :
         form = CreatePollForm(request.POST)
@@ -56,7 +60,8 @@ def create_view(request, *args, **kwargs) :
         'form' : form
     }
     return render(request, 'polls/create.html', context)
- 
+
+@login_required(login_url='login') 
 def result_view(request, poll_id, *args, **kwargs) :
     poll = Polls.objects.get(pk = poll_id)
     context = {
@@ -65,28 +70,39 @@ def result_view(request, poll_id, *args, **kwargs) :
     return render(request, 'polls/result.html', context)
 
 def register_view(request) :
-    form = CreateUserForm()
+    if request.user.is_authenticated:
+        return redirect('dashboard')
+    else:
+        form = CreateUserForm()
 
-    if request.method == 'POST' :
-        form = CreateUserForm(request.POST)
-        if form.is_valid() :
-            form.save()
-            return redirect('login')
+        if request.method == 'POST' :
+            form = CreateUserForm(request.POST)
+            if form.is_valid() :
+                form.save()
+                return redirect('login')
 
-    context = {'form': form}
-    return render(request, 'polls/register.html', context)
+        context = {'form': form}
+        return render(request, 'polls/register.html', context)
 
 def login_view(request) :
-    if request.method == 'POST' :
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+    if request.user.is_authenticated:
+        return redirect('dashboard')
+    else:
+        if request.method == 'POST' :
+            username = request.POST.get('username')
+            password = request.POST.get('password')
 
-        user = authenticate(request, username = username, password = password)
-        if user is not None :
-            login(request, user)
-            messages.success(request, 'heyyy')
-            return redirect('dashboard')
-    return render(request, 'polls/login.html', {})
+            user = authenticate(request, username = username, password = password)
+            if user is not None :
+                login(request, user)
+                messages.success(request, 'heyyy')
+                return redirect('dashboard')
+        return render(request, 'polls/login.html', {})
+
+@login_required(login_url='login')
+def logout_view(request) :
+    logout(request)
+    return redirect('login')
 
 def resultsData(request, poll_id) :
     votedata = []
